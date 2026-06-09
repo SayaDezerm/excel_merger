@@ -77,7 +77,6 @@ def merge_service(sheet_name, selected_columns, primary_file_name, output_file, 
         columns_to_drop = [col for col in main_frame.columns.tolist() if col not in columns]
         main_frame = main_frame.drop(columns=columns_to_drop)
 
-        print(f"LOGS - {main_frame=}") #log to verify if unselected columns was deleted
 
     except Exception as ex:
         return Response({"error": f"Error reading primary file: {ex}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
