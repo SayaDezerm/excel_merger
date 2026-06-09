@@ -201,5 +201,25 @@ document.getElementById('mergeBtn').addEventListener('click', async function() {
         a.download = outputFile.name;
         a.click();
         window.URL.revokeObjectURL(url);
+
+        resetPage();
     }
 });
+
+function resetPage() {
+    // Reset folder input
+    document.getElementById('folderInput').value = '';
+
+    // Reset output file
+    document.getElementById('outputFile').value = '';
+
+    // Clear file list
+    document.getElementById('lista-fisiere').innerHTML = '';
+
+    // Clear selects
+    document.getElementById('primary-file-select').innerHTML = '';
+    document.getElementById('sheet-select').innerHTML = '';
+
+    // Clear columns
+    document.getElementById('columns-container').innerHTML = '';
+}
