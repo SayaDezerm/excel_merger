@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;700;800&display=swap');
+
+/* =====================
+   VARIABLES
+   ===================== */
+:root {
+    --bg:           #f5f4f0;
+    --surface:      #ffffff;
+    --surface-2:    #eeede8;
+    --border:       #dddbd4;
+    --border-dark:  #c4c2ba;
+    --accent:       #1a1a1a;
+    --accent-2:     #e8ff47;
+    --text:         #1a1a1a;
+    --text-muted:   #888880;
+    --text-dim:     #555550;
+    --radius:       6px;
+    --transition:   0.18s ease;
+}
+
+/* =====================
+   RESET
+   ===================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { font-size: 16px; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    min-height: 100vh;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 0 80px;
+}
+
+hr { display: none; }
+
+/* =====================
+   HEADER
+   ===================== */
+body > div:first-child {
+    padding: 52px 0 36px;
+    border-bottom: 2px solid var(--accent);
+    animation: fadeDown 0.5s ease both;
+}
+
+h1 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* =====================
+   SECTIONS
+   ===================== */
+body > div:not(:first-child),
+.container {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+    animation: fadeUp 0.4s ease both;
+}
+
+body > div:nth-child(2) { animation-delay: 0.05s; }
+body > div:nth-child(3) { animation-delay: 0.10s; }
+body > div:nth-child(4) { animation-delay: 0.15s; }
+body > div:nth-child(5) { animation-delay: 0.20s; }
+body > div:nth-child(6) { animation-delay: 0.25s; }
+body > div:nth-child(7) { animation-delay: 0.30s; }
+
+/* =====================
+   STEP LABELS
+   ===================== */
+body > div:not(:first-child) > p:first-child,
+.container > p:first-child {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body > div:not(:first-child) > p:first-child::after,
+.container > p:first-child::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* =====================
+   FILE INPUTS
+   ===================== */
+#folderInput,
+#outputFile {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: border-color var(--transition);
+    width: 100%;
+}
+
+#folderInput:hover,
+#outputFile:hover {
+    border-color: var(--accent);
+}
+
+#folderInput::file-selector-button,
+#outputFile::file-selector-button {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    padding: 5px 12px;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: all var(--transition);
+}
+
+#folderInput::file-selector-button:hover,
+#outputFile::file-selector-button:hover {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+/* =====================
+   BUTTONS
+   ===================== */
+button {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: var(--radius);
+    padding: 10px 24px;
+    transition: all var(--transition);
+    border: 1px solid transparent;
+}
+
+#uploadBtn {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    margin-top: 12px;
+}
+
+#uploadBtn:hover {
+    background: #333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#mergeBtn {
+    background: var(--accent-2);
+    color: var(--text);
+    border-color: var(--accent-2);
+    padding: 12px 36px;
+    font-size: 0.8rem;
+}
+
+#mergeBtn:hover {
+    background: #d4eb30;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+/* =====================
+   FILES LIST
+   ===================== */
+#lista-fisiere {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+#lista-fisiere label.file-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+}
+
+#lista-fisiere label.file-tag:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+#lista-fisiere label.file-tag:has(input:checked) {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
+
+/* =====================
+   SELECTS
+   ===================== */
+label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+select {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 9px 36px 9px 12px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23888880' d='M5 7L0 2h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color var(--transition);
+    min-width: 200px;
+}
+
+select:hover, select:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+select option {
+    background: var(--surface);
+    color: var(--text);
+}
+
+/* =====================
+   CHECKBOXES
+   ===================== */
+#lista-fisiere input[type="checkbox"],
+#columns-container input[type="checkbox"] {
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border: 1px solid var(--border-dark);
+    border-radius: 3px;
+    background: var(--bg);
+    cursor: pointer;
+    transition: all var(--transition);
+    flex-shrink: 0;
+    position: relative;
+}
+
+#lista-fisiere input[type="checkbox"]:checked,
+#columns-container input[type="checkbox"]:checked {
+    background: var(--bg);
+    border-color: var(--bg);
+}
+
+#lista-fisiere input[type="checkbox"]:checked::after,
+#columns-container input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    width: 4px;
+    height: 7px;
+    border: 1.5px solid var(--accent);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+/* =====================
+   COLUMNS
+   ===================== */
+#columns-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#columns-container label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+}
+
+#columns-container label:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+#columns-container label:has(input:checked) {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
+
+/* =====================
+   ANIMATIONS
+   ===================== */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================
+   SCROLLBAR
+   ===================== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 900px) {
+    body { padding: 0 24px 80px; }
+}
+
+@media (max-width: 600px) {
+    body { padding: 0 16px 60px; }
+    h1 { font-size: 1.8rem; }
+    select { min-width: 140px; }
+}
