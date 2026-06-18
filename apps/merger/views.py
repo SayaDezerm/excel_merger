@@ -7,7 +7,7 @@ from .models import MergeSession
 from .serializers import MergeSessionSerializer
 import pandas as pd
 import json
-
+    
 def MergeView(request):
     return render(request, 'merger/html/index.html')
 
